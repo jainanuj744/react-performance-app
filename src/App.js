@@ -3,6 +3,8 @@ import { Suspense, lazy } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HOC from "./Components/HOC";
+import CompA from "./Components/CompA";
 // import SimpleImport from './Components/SimpleImport';
 
 const Home = lazy(() => import("./Pages/Home"));
@@ -15,7 +17,7 @@ function App() {
     <div className="App">
       {/* <DynamicImport/> */}
       {/* <SimpleImport/> */}
-      <Suspense fallback={<h2>.....Loading</h2>}>
+      {/* <Suspense fallback={<h2>.....Loading</h2>}>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -25,7 +27,10 @@ function App() {
             <Route path="/testimonials" element={<Testimonials />}></Route>
           </Routes>
         </BrowserRouter>
-      </Suspense>
+      </Suspense> */}
+
+      <CompA dark/>
+      <CompA light/>
     </div>
   );
 }
