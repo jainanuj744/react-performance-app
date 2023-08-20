@@ -1,27 +1,31 @@
-import DynamicImport from "./Components/DynamicImport";
+// import DynamicImport from "./Components/DynamicImport";
+import { Suspense, lazy } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Products from "./Pages/Products";
-import Testimonials from "./Pages/Testimonials";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import SimpleImport from './Components/SimpleImport';
+
+const Home = lazy(() => import("./Pages/Home"));
+const About = lazy(() => import("./Pages/About"));
+const Products = lazy(() => import("./Pages/Products"));
+const Testimonials = lazy(() => import("./Pages/Testimonials"));
 
 function App() {
   return (
     <div className="App">
       {/* <DynamicImport/> */}
       {/* <SimpleImport/> */}
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="./" element={<Home />}></Route>
-          <Route path="./about" element={<About />}></Route>
-          <Route path="./products" element={<Products />}></Route>
-          <Route path="./testimonials" element={<Testimonials />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <Suspense fallback={<h2>.....Loading</h2>}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/products" element={<Products />}></Route>
+            <Route path="/testimonials" element={<Testimonials />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
     </div>
   );
 }
