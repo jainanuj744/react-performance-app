@@ -5,6 +5,8 @@ import Navbar from "./Components/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HOC from "./Components/HOC";
 import CompA from "./Components/CompA";
+import Controlled from "./Components/Controlled";
+import UnControlled from "./Components/UnControlled";
 // import SimpleImport from './Components/SimpleImport';
 
 const Home = lazy(() => import("./Pages/Home"));
@@ -29,8 +31,11 @@ function App() {
         </BrowserRouter>
       </Suspense> */}
 
-      <CompA dark/>
-      <CompA light/>
+      {/* <CompA dark/>
+      <CompA light/> */}
+
+      <Controlled/>
+      <UnControlled/>
     </div>
   );
 }
